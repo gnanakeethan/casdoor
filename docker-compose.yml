@@ -2,10 +2,7 @@ version: '3.8'
 services:
   casdoor:
     restart: always
-    build:
-      context: ./
-      dockerfile: Dockerfile
-      target: STANDARD
+    image: 'casbin/casdoor:v2.45.0'
     entrypoint: "/bin/sh -c './server --createDatabase=true'"
     environment:
       - RUNNING_IN_DOCKER=true
