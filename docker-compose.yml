@@ -7,7 +7,8 @@ services:
     environment:
       - RUNNING_IN_DOCKER=true
       - SERVICE_FQDN_CASDOOR_8000
-      - 'dataSourceName = root:${SERVICE_PASSWORD_DB}@tcp(db:3306)/'
+      - dataSourceName=root:${SERVICE_PASSWORD_DB}@tcp(db:3306)/
+      - dbName=casdoor
     depends_on:
       - db
     volumes:
@@ -16,7 +17,7 @@ services:
         source: ./conf/app.conf
         target: /conf/app.conf
         is_directory: false
-        content: "appname = casdoor\nhttpport = 8000\nrunmode = dev\ncopyrequestbody = true\ndriverName = mysql\ndbName = casdoor\ntableNamePrefix =\nshowSql = false\nredisEndpoint =\ndefaultStorageProvider =\nisCloudIntranet = false\nauthState = \"casdoor\"\nsocks5Proxy = \"127.0.0.1:10808\"\nverificationCodeTimeout = 10\ninitScore = 0\nlogPostOnly = true\nisUsernameLowered = false\norigin = \noriginFrontend = \nstaticBaseUrl = \"https://sso.cloudparallax.com\"\nisDemoMode = false\nbatchSize = 100\nenableErrorMask = false\nenableGzip = true\ninactiveTimeoutMinutes =\nldapServerPort = 389\nldapsCertId = \"\"\nldapsServerPort = 636\nradiusServerPort = 1812\nradiusDefaultOrganization = \"built-in\"\nradiusSecret = \"secret\"\nquota = {\"organization\": -1, \"user\": -1, \"application\": -1, \"provider\": -1}\nlogConfig = {\"adapter\":\"file\", \"filename\": \"logs/casdoor.log\", \"maxdays\":99999, \"perm\":\"0770\"}\ninitDataNewOnly = false\ninitDataFile = \"./init_data.json\"\nfrontendBaseDir = \"../cc_0\"\n"
+        content: "appname = casdoor\nhttpport = 8000\nrunmode = dev\ncopyrequestbody = true\ndriverName = mysql\ntableNamePrefix =\nshowSql = false\nredisEndpoint =\ndefaultStorageProvider =\nisCloudIntranet = false\nauthState = \"casdoor\"\nsocks5Proxy = \"127.0.0.1:10808\"\nverificationCodeTimeout = 10\ninitScore = 0\nlogPostOnly = true\nisUsernameLowered = false\norigin = \noriginFrontend = \nstaticBaseUrl = \"https://sso.cloudparallax.com\"\nisDemoMode = false\nbatchSize = 100\nenableErrorMask = false\nenableGzip = true\ninactiveTimeoutMinutes =\nldapServerPort = 389\nldapsCertId = \"\"\nldapsServerPort = 636\nradiusServerPort = 1812\nradiusDefaultOrganization = \"built-in\"\nradiusSecret = \"secret\"\nquota = {\"organization\": -1, \"user\": -1, \"application\": -1, \"provider\": -1}\nlogConfig = {\"adapter\":\"file\", \"filename\": \"logs/casdoor.log\", \"maxdays\":99999, \"perm\":\"0770\"}\ninitDataNewOnly = false\ninitDataFile = \"./init_data.json\"\nfrontendBaseDir = \"../cc_0\"\n"
   db:
     restart: always
     image: 'mysql:8.0.25'
